@@ -5,8 +5,6 @@ import (
 	"log"
 	"os"
 	"strings"
-
-	"github.com/cbt4all/mytoolkits"
 )
 
 // RemoveDuplicatesFromSliceString ....
@@ -120,5 +118,5 @@ func SaveSliceStrToFile(fname string, slc []string) {
 	for _, item := range slc {
 		strTmp = strTmp + item
 	}
-	mytoolkits.SaveStringToFile(fname, strTmp)
+	SaveStringToFile(fname, strTmp)
 }
