@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 	"strings"
-)
 
-// MyLogger ...
+	"github.com/cbt4all/mytoolkits"
+)
 
 // RemoveDuplicatesFromSliceString ....
 func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
@@ -97,12 +97,28 @@ func FindPatternString(s, start, end string) ([]int, string) {
 	/*
 		An Example of how to use in main function
 
+		var strSlice []string
 		var idx int
 		l := len(output)
 		for i := 0; i < l; i++ {
-			iresult, sresult := FindPatternString(output[idx:], `<response status="success"><result>`, `</result></response>`)
-			idx = idx + iresult[1]
-			fmt.Println(sresult)
+			iresult, sresult := mytoolkits.FindPatternString(output[idx:], `<response status="success"><result>`, `</result></response>`)
+			if iresult[0] != -1 && iresult[1] != -1 {
+				idx = idx + iresult[1]
+				strSlice = append(strSlice, sresult)
+			} else {
+				break
+			}
 		}
 	*/
+}
+
+//------------------------------------------------------------------------------
+
+// SaveSliceStrToFile ...
+func SaveSliceStrToFile(fname string, slc []string) {
+	var strTmp string
+	for _, item := range slc {
+		strTmp = strTmp + item
+	}
+	mytoolkits.SaveStringToFile(fname, strTmp)
 }
