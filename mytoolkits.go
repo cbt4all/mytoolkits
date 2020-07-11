@@ -116,7 +116,7 @@ func FindPatternString(s, start, end string) ([]int, string) {
 func SaveSliceStrToFile(fname string, slc []string) {
 	var strTmp string
 	for _, item := range slc {
-		strTmp = strTmp + item
+		strTmp = strTmp + item + "\n"
 	}
 	SaveStringToFile(fname, strTmp)
 }
