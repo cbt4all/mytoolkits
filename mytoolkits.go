@@ -141,3 +141,35 @@ func SaveSliceStrToFile(fname string, slc []string) {
 	}
 	SaveStringToFile(fname, strTmp)
 }
+
+//------------------------------------------------------------------------------
+
+// FindBetweenString ...
+func FindBetweenString(s, start, end string) ([]int, string) {
+
+	var iresult []int
+	var sresult string
+
+	sidx := strings.Index(s, start)
+	eidx := strings.Index(s, end)
+
+	iresult = append(iresult, sidx)
+	iresult = append(iresult, eidx)
+
+	if sidx != -1 && eidx != -1 {
+		sresult = string(s[sidx+len(start) : eidx])
+	}
+
+	return iresult, sresult
+
+	/*
+		An Example of how to use in main function
+
+		iresult, tmp := FindBetweenString(str, " from ", " to ")
+			if iresult[0] != -1 && iresult[1] != -1 {
+				fmt.Println(tmp)
+			} else {
+				fmt.Println("ERROR")
+			}
+	*/
+}
