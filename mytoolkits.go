@@ -112,6 +112,27 @@ func FindPatternString(s, start, end string) ([]int, string) {
 
 //------------------------------------------------------------------------------
 
+// FindPatternSliceString ....
+func FindPatternSliceString(s, start, end string) []string {
+
+	var SliceResutl []string
+	var idx int
+	l := len(s)
+
+	for i := 0; i < l; i++ {
+		iresult, sresult := FindPatternString(s[idx:], start, end)
+		if iresult[0] != -1 && iresult[1] != -1 {
+			idx = idx + iresult[1]
+			SliceResutl = append(SliceResutl, sresult)
+		} else {
+			break
+		}
+	}
+	return SliceResutl
+}
+
+//------------------------------------------------------------------------------
+
 // SaveSliceStrToFile ...
 func SaveSliceStrToFile(fname string, slc []string) {
 	var strTmp string
