@@ -152,6 +152,9 @@ func FindBetweenString(s, start, end string) ([]int, string) {
 
 	sidx := strings.Index(s, start)
 	eidx := strings.Index(s, end)
+	if end == "\n\r" {
+		eidx = len(s)
+	}
 
 	iresult = append(iresult, sidx)
 	iresult = append(iresult, eidx)
