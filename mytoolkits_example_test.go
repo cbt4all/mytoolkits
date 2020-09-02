@@ -42,7 +42,9 @@ func Example_readTextFileLoadToMem() {
 	// assume that the file myfile.txt in in the current directory
 	// and the content of the file is aaaaaa bbbbbb cccccc
 	// Read the file and returns a string and a slice of string
-	str, slicestr := mytoolkits.ReadTextFileLoadToMem("./myfile.txt", str)
+	str, sliceStr := mytoolkits.ReadTextFileLoadToMem("./myfile.txt")
+	fmt.Println(str)
+	fmt.Println(sliceStr)
 
 	//Output will be:
 	//aaaaaa bbbbbb cccccc
