@@ -2,29 +2,34 @@ package mytoolkits
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/cbt4all/mytoolkits"
 )
 
 // ExampleRemoveDuplicatesFromSliceString gets a slice of string and remove duplicate
 // string from it
-func ExampleRemoveDuplicatesFromSliceString(sliceStr []string) []string {
+func Example_removeDuplicatesFromSliceString() {
 
-	m := make(map[string]bool)
-
-	for _, item := range sliceStr {
-		if _, DoesExist := m[item]; !DoesExist {
-			m[item] = true
-		}
+	// Using RemoveDuplicatesFromSliceString...
+	// Create a slice of string
+	strSlice := []string{
+		"aaaaaa",
+		"bbbbbb",
+		"cccccc",
+		"aaaaaa",
+		"dddddd",
+		"cccccc",
 	}
 
-	var result []string
+	// RemoveDuplicatesFromSliceString gets a slice of string and removes all duplicates in it
+	tmpSlice := mytoolkits.RemoveDuplicatesFromSliceString(strSlice)
+	fmt.Println(tmpSlice)
 
-	for item := range m {
-		result = append(result, item)
-	}
-	return result
+	// Output:	[aaaaaa bbbbbb cccccc dddddd]
 }
 
 //------------------------------------------------------------------------------

@@ -19,12 +19,11 @@ func Example_removeDuplicatesFromSliceString() {
 		"cccccc",
 	}
 
-	// RemoveDuplicatesFromSliceString gets a slice of string and remove all duplicates in it
+	// RemoveDuplicatesFromSliceString gets a slice of string and removes all duplicates in it
 	tmpSlice := mytoolkits.RemoveDuplicatesFromSliceString(strSlice)
 	fmt.Println(tmpSlice)
 
-	// Output:
-	// [aaaaaa bbbbbb cccccc dddddd]
+	// Output:	[aaaaaa bbbbbb cccccc dddddd]
 }
 
 func Example_saveStringToFile() {
