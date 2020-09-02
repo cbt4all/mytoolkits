@@ -7,7 +7,8 @@ import (
 	"strings"
 )
 
-// RemoveDuplicatesFromSliceString ....
+// RemoveDuplicatesFromSliceString gets a slice of string and remove duplicate
+// string from it
 func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
 
 	m := make(map[string]bool)
@@ -28,7 +29,7 @@ func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
 
 //------------------------------------------------------------------------------
 
-// SaveStringToFile ...
+// SaveStringToFile gets filepath (path+filename) and values that should be stored
 func SaveStringToFile(filepath, values string) {
 
 	f, err := os.OpenFile(filepath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
