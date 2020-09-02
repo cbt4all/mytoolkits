@@ -27,10 +27,11 @@ func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
 	return result
 }
 
-// SaveStringToFile gets filename (path+filename) and values that should be stored
-func SaveStringToFile(filename, values string) {
+// SaveStringToFile gets fname (path+filename) and values that should be stored
+// in the file
+func SaveStringToFile(fname, values string) {
 
-	f, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile(fname, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal("Failed open the file:", err)
 	}
@@ -43,12 +44,11 @@ func SaveStringToFile(filename, values string) {
 	if err := f.Close(); err != nil {
 		log.Fatal(err)
 	}
-
 }
 
 // ReadTextFileLoadToMem gets filepath (path+filename), reads it and
 // returns it as a string as well as a slice of string
-func ReadTextFileLoadToMem(filename string) (string, []string) {
+func ReadTextFileLoadToMem(fname string) (string, []string) {
 
 	// Slice of string version of the file
 	var slcResult []string
@@ -57,7 +57,7 @@ func ReadTextFileLoadToMem(filename string) (string, []string) {
 	var sResult string
 
 	// Open the file
-	file, err := os.Open(filename)
+	file, err := os.Open(fname)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -79,7 +79,10 @@ func ReadTextFileLoadToMem(filename string) (string, []string) {
 	return sResult, slcResult
 }
 
-// FindPatternString ....
+// FindPatternString find a specific patterns in a text. To do this, it gets a string 's'
+// and 'start', 'end' as two other string as prapeters and search in the entier 's' to find a substring
+// and begins with 'start' and finishes with 'end'. Note 'start' ≠ 'end'
+// If nothing is found {-1,-1} is returned
 func FindPatternString(s, start, end string) ([]int, string) {
 
 	var iresult []int
@@ -95,30 +98,18 @@ func FindPatternString(s, start, end string) ([]int, string) {
 		sresult = string(s[sidx:eidx])
 	}
 
+	// iresult is the index of 'start' and 'end'
+	// sresult is the string found between 'start' and 'end'
 	return iresult, sresult
-
-	/*
-		An Example of how to use in main function
-
-		var strSlice []string
-		var idx int
-		l := len(output)
-		for i := 0; i < l; i++ {
-			iresult, sresult := mytoolkits.FindPatternString(output[idx:], `<response status="success"><result>`, `</result></response>`)
-			if iresult[0] != -1 && iresult[1] != -1 {
-				idx = idx + iresult[1]
-				strSlice = append(strSlice, sresult)
-			} else {
-				break
-			}
-		}
-	*/
 }
 
-// FindPatternSliceString ....
+// FindPatternSliceString uses the function FindPatternString to find all strings with a specific paterns in
+// a string 's'. The patern should begin with 'start' and finish with 'end' while 'start' and 'end' are the function
+// parameter. Note 'start' ≠ 'end'
+// If nothing is found, nil is returned
 func FindPatternSliceString(s, start, end string) []string {
 
-	var SliceResutl []string
+	var sliceResult []string
 	var idx int
 	l := len(s)
 
@@ -126,24 +117,28 @@ func FindPatternSliceString(s, start, end string) []string {
 		iresult, sresult := FindPatternString(s[idx:], start, end)
 		if iresult[0] != -1 && iresult[1] != -1 {
 			idx = idx + iresult[1]
-			SliceResutl = append(SliceResutl, sresult)
+			sliceResult = append(sliceResult, sresult)
 		} else {
 			break
 		}
 	}
-	return SliceResutl
+	return sliceResult
 }
 
-// SaveSliceStrToFile ...
-func SaveSliceStrToFile(fname string, slc []string) {
+// SaveSliceStrToFile gets fname (path+filename) and value as slice of string that should be stored
+// in the file
+func SaveSliceStrToFile(fname string, value []string) {
 	var strTmp string
-	for _, item := range slc {
+	for _, item := range value {
 		strTmp = strTmp + item + "\n"
 	}
 	SaveStringToFile(fname, strTmp)
 }
 
-// FindBetweenString ...
+// FindBetweenString gets three strings 's', 'start' and 'end' as parameters then search 's' to
+// find a string begins with 'start' and after that continue searching to find a string begins
+// with 'end' and returns the index of what is found
+// If nothing is found {-1,-1} is returned
 func FindBetweenString(s, start, end string) ([]int, string) {
 
 	var iresult []int
@@ -162,16 +157,7 @@ func FindBetweenString(s, start, end string) ([]int, string) {
 		sresult = string(s[sidx+len(start) : eidx])
 	}
 
+	// iresult is the index of 'start' and 'end'
+	// sresult is the string found between 'start' and 'end'
 	return iresult, sresult
-
-	/*
-		An Example of how to use in main function
-
-		iresult, tmp := FindBetweenString(str, " from ", " to ")
-			if iresult[0] != -1 && iresult[1] != -1 {
-				fmt.Println(tmp)
-			} else {
-				fmt.Println("ERROR")
-			}
-	*/
 }
