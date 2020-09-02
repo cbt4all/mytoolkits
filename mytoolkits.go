@@ -29,10 +29,10 @@ func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
 
 //------------------------------------------------------------------------------
 
-// SaveStringToFile gets filepath (path+filename) and values that should be stored
-func SaveStringToFile(filepath, values string) {
+// SaveStringToFile gets filename (path+filename) and values that should be stored
+func SaveStringToFile(filename, values string) {
 
-	f, err := os.OpenFile(filepath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	f, err := os.OpenFile(filename, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal("Failed open the file:", err)
 	}
@@ -50,25 +50,35 @@ func SaveStringToFile(filepath, values string) {
 
 //------------------------------------------------------------------------------
 
-// ReadTextFileLoadToMem ...
+// ReadTextFileLoadToMem gets filepath (path+filename), reads it and
+// returns it as a string as well as a slice of string
 func ReadTextFileLoadToMem(filename string) (string, []string) {
 
+	// Slice of string version of the file
 	var slcResult []string
+
+	// String version of the file
 	var sResult string
 
+	// Open the file
 	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer file.Close()
 
+	// Create a bufio.Scanner to read the file
 	scanner := bufio.NewScanner(file)
+
+	// Criteria of having a new line in the file being read
+	// is to have new-line charecters (\n,\r or both)
 	scanner.Split(bufio.ScanLines)
 
+	// Read the file line by line
 	for scanner.Scan() {
 		tmpstr := scanner.Text()
-		slcResult = append(slcResult, tmpstr)
-		sResult = sResult + tmpstr
+		slcResult = append(slcResult, tmpstr) // Creating slice of the string
+		sResult = sResult + tmpstr            // Creating a string of the file
 	}
 	return sResult, slcResult
 }
