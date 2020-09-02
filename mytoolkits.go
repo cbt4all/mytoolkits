@@ -27,8 +27,6 @@ func RemoveDuplicatesFromSliceString(sliceStr []string) []string {
 	return result
 }
 
-//------------------------------------------------------------------------------
-
 // SaveStringToFile gets filename (path+filename) and values that should be stored
 func SaveStringToFile(filename, values string) {
 
@@ -47,8 +45,6 @@ func SaveStringToFile(filename, values string) {
 	}
 
 }
-
-//------------------------------------------------------------------------------
 
 // ReadTextFileLoadToMem gets filepath (path+filename), reads it and
 // returns it as a string as well as a slice of string
@@ -82,8 +78,6 @@ func ReadTextFileLoadToMem(filename string) (string, []string) {
 	}
 	return sResult, slcResult
 }
-
-//------------------------------------------------------------------------------
 
 // FindPatternString ....
 func FindPatternString(s, start, end string) ([]int, string) {
@@ -121,8 +115,6 @@ func FindPatternString(s, start, end string) ([]int, string) {
 	*/
 }
 
-//------------------------------------------------------------------------------
-
 // FindPatternSliceString ....
 func FindPatternSliceString(s, start, end string) []string {
 
@@ -142,8 +134,6 @@ func FindPatternSliceString(s, start, end string) []string {
 	return SliceResutl
 }
 
-//------------------------------------------------------------------------------
-
 // SaveSliceStrToFile ...
 func SaveSliceStrToFile(fname string, slc []string) {
 	var strTmp string
@@ -152,8 +142,6 @@ func SaveSliceStrToFile(fname string, slc []string) {
 	}
 	SaveStringToFile(fname, strTmp)
 }
-
-//------------------------------------------------------------------------------
 
 // FindBetweenString ...
 func FindBetweenString(s, start, end string) ([]int, string) {

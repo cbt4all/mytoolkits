@@ -28,7 +28,7 @@ func ExampleRemoveDuplicatesFromSliceString() {
 }
 
 // A simple example of how to use SaveStringToFile
-func Example_saveStringToFile() {
+func ExampleSaveStringToFile() {
 
 	// Create a string of data
 	str := "aaaaaa bbbbbb cccccc"
@@ -37,7 +37,7 @@ func Example_saveStringToFile() {
 	mytoolkits.SaveStringToFile("./myfile.txt", str)
 }
 
-func Example_readTextFileLoadToMem() {
+func ExampleReadTextFileLoadToMem() {
 
 	// assume that the file myfile.txt in in the current directory
 	// and the content of the file is aaaaaa bbbbbb cccccc
