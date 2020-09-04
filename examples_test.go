@@ -21,8 +21,8 @@ func ExampleRemoveDuplicatesFromSliceString() {
 	tmpSlice := mytoolkits.RemoveDuplicatesFromSliceString(strSlice)
 	fmt.Println(tmpSlice)
 
-	// Output will be:
-	//[aaaaaa bbbbbb cccccc dddddd]
+	// Output:
+	// [aaaaaa bbbbbb cccccc dddddd]
 
 }
 
