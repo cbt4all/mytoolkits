@@ -23,6 +23,7 @@ func ExampleRemoveDuplicatesFromSliceString() {
 
 	// Output will be:
 	//[aaaaaa bbbbbb cccccc dddddd]
+
 }
 
 func ExampleSaveStringToFile() {
