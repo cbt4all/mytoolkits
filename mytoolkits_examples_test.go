@@ -57,9 +57,9 @@ func ExampleReadTextFileLoadToMem() {
 	fmt.Println(str)
 	fmt.Println(sliceStr)
 
-	//Output will be:
-	//aaaaaa bbbbbb cccccc
-	//[aaaaaa bbbbbb cccccc]
+	// Output:
+	// aaaaaa bbbbbb cccccc
+	// [aaaaaa bbbbbb cccccc]
 }
 
 func ExampleFindPatternString() {
@@ -91,7 +91,8 @@ func ExampleFindPatternString() {
 	}
 
 	fmt.Println(strSlice)
-	// Output will be: [<response status="success"><result>DATA1</result></response>]
+	// Output:
+	// <response status="success"><result>DATA1</result></response>
 }
 
 func ExampleFindPatternSliceString() {
@@ -125,11 +126,11 @@ func ExampleFindPatternSliceString() {
 		fmt.Println(item)
 	}
 
-	// Output will be:
-	//<response status="success"><result>DATA1</result></response>
-	//<response status="success"><result>DATA2</result></response>
-	//<response status="success"><result>DATA3</result></response>
-	//<response status="success"><result>DATA4</result></response>
+	// Output:
+	// <response status="success"><result>DATA1</result></response>
+	// <response status="success"><result>DATA2</result></response>
+	// <response status="success"><result>DATA3</result></response>
+	// <response status="success"><result>DATA4</result></response>
 }
 
 func ExampleFindBetweenString() {
