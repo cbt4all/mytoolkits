@@ -2,8 +2,6 @@ package mytoolkits
 
 import (
 	"fmt"
-
-	"github.com/cbt4all/mytoolkits"
 )
 
 func ExampleRemoveDuplicatesFromSliceString() {
@@ -18,7 +16,7 @@ func ExampleRemoveDuplicatesFromSliceString() {
 	}
 
 	//Remove all duplicates in the slice strSlice and save the result in tmpSlice
-	tmpSlice := mytoolkits.RemoveDuplicatesFromSliceString(strSlice)
+	tmpSlice := RemoveDuplicatesFromSliceString(strSlice)
 	fmt.Println(tmpSlice)
 
 	// Output:
@@ -31,7 +29,7 @@ func ExampleSaveStringToFile() {
 	str := "aaaaaa bbbbbb cccccc"
 
 	// Save the string str to the file myfile.txt as a string
-	mytoolkits.SaveStringToFile("./myfile.txt", str)
+	SaveStringToFile("./myfile.txt", str)
 }
 
 func ExampleSaveSliceStrToFile() {
@@ -46,14 +44,14 @@ func ExampleSaveSliceStrToFile() {
 	}
 
 	// Save the slice of string  to the file myfile.txt as a string
-	mytoolkits.SaveSliceStrToFile("./myfile.txt", strSlice)
+	SaveSliceStrToFile("./myfile.txt", strSlice)
 }
 
 func ExampleReadTextFileLoadToMem() {
 	// assume that the file myfile.txt in in the current directory
 	// and the content of the file is aaaaaa bbbbbb cccccc
 	// Read the file and returns a string and a slice of string
-	str, sliceStr := mytoolkits.ReadTextFileLoadToMem("./myfile.txt")
+	str, sliceStr := ReadTextFileLoadToMem("./myfile.txt")
 	fmt.Println(str)
 	fmt.Println(sliceStr)
 
@@ -81,7 +79,7 @@ func ExampleFindPatternString() {
 	var idx int
 	l := len(strdata)
 	for i := 0; i < l; i++ {
-		iresult, sresult := mytoolkits.FindPatternString(strdata[idx:], `<response status="success"><result>`, `</result></response>`)
+		iresult, sresult := FindPatternString(strdata[idx:], `<response status="success"><result>`, `</result></response>`)
 		if iresult[0] != -1 && iresult[1] != -1 {
 			idx = idx + iresult[1]
 			strSlice = append(strSlice, sresult)
@@ -120,7 +118,7 @@ func ExampleFindPatternSliceString() {
 	// s will be strdata
 	// start will be <response status="success"><result>
 	// end will be </result></response>
-	strSlice := mytoolkits.FindPatternSliceString(strdata, `<response status="success"><result>`, `</result></response>`)
+	strSlice := FindPatternSliceString(strdata, `<response status="success"><result>`, `</result></response>`)
 
 	for _, item := range strSlice {
 		fmt.Println(item)
@@ -138,7 +136,7 @@ func ExampleFindBetweenString() {
 	strdata := `aaaaaaaaa bbbbbbb ccccccc index1 dddddd eeeeee ffffff ggggg index2 
 	hhhhhh iiiiii jjjjjj `
 
-	iresult, str := mytoolkits.FindBetweenString(strdata, " index1 ", " index2 ")
+	iresult, str := FindBetweenString(strdata, " index1 ", " index2 ")
 
 	if iresult[0] != -1 && iresult[1] != -1 {
 		fmt.Println("index1 is in: ", iresult[0])
